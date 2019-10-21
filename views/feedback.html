@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>hello</title>
+		<meta charset="utf-8" />
+	    <meta name="format-detection" content="telephone=no" />
+	    <meta name="msapplication-tap-highlight" content="no" />
+	    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+	    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+	    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" />
+	    <link rel="stylesheet" href="../css/bootstrap.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row" style="margin-top: 80px;">
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<div class="well">
+						<h2 class="text-center">Please Provide Feedback</h2>
+						<form class="text-center">
+		                    <table class="table">
+		                        <tr>
+		                            <td colspan="2"><textarea id="ta" class="form-control" rows="10" placeholder="Enter Feedback Here"></textarea></td>
+		                        </tr>
+		                       
+		                        <tr>
+		                            <td class="text-center"><button id="submit" class="btn btn-primary" type="button">Submit</button></td>
+		                            <td class="text-center"><button class="btn btn-primary" type="reset">Reset</button></td>
+		                        </tr>
+		                    </table>
+		                </form>
+					</div>
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+		</div>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+        {
+            $("#submit").unbind().click(function()
+            {
+                $.ajax({
+
+                        type : 'post',
+                        data : {
+
+                            'feedback' : $('#ta').val()
+
+                        },
+                        url : 'http://localhost/androidapp/routes/feedback.php',
+                        success : function(data)
+                        {
+                            if(data=="success")
+                            {
+                                alert("Bhadiya bhai");
+                            }
+                        }
+
+                });
+            });
+        });
+	</script>
+</html>

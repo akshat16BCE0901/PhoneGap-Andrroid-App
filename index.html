@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" />
+    <link rel="stylesheet" href="css/bootstrap.css">
+  
+    <title>Hello World</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row" style="margin-top: 50px;margin-bottom: 10px;">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h1 class="text-center">Enter Your details</h1>
+                <form method="post" action="">
+                    <table class="table">
+                        <tr>
+                            <td>Enter Name</td>
+                            <td><input class="form-control" id="name" type="text" name="name" /></td>
+                        </tr>
+                        <tr>
+                            <td>Enter Age</td>
+                            <td><input class="form-control" id="age" type="number" max="110" name="age" /></td>
+                        </tr>
+                        <tr>
+                            <td>Enter Phone Number</td>
+                            <td><input class="form-control" id="phone" type="number" name="phone" maxlength="10" minlength="10" /></td>
+                        </tr>
+                        <tr>
+                            <td>Enter Address</td>
+                            <td><input class="form-control" id="address" type="text" name="address" /></td>
+                        </tr>
+                        <tr>
+                            <td class="text-center"><button id="submit" class="btn btn-primary" type="button">Submit</button></td>
+                            <td class="text-center"><button class="btn btn-primary" type="reset">Reset</button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    <!-- <div class="app">
+        <h1>Hello World</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+        <div>
+            <h2>Kya haal hain</h2>
+        </div>
+    </div> -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+    
+    <script>
+        $(document).ready(function()
+        {
+            $("#submit").unbind().click(function()
+            {
+                $.ajax({
+
+                        type : 'post',
+                        data : {
+
+                            'name' : $('#name').val(),
+                            'age' : $('#age').val(),
+                            'phone' : $('#phone').val(),
+                            'address' : $('#address').val()
+
+
+                        },
+                        url : 'http://localhost/androidapp/routes/msg.php',
+                        success : function(data)
+                        {
+                            if(data=="success")
+                            {
+                                location.href = 'views/feedback.html';
+                            }
+                        }
+
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
