@@ -43,24 +43,7 @@
         {
             $("#submit").unbind().click(function()
             {
-                $.ajax({
-
-                        type : 'post',
-                        data : {
-
-                            'feedback' : $('#ta').val()
-
-                        },
-                        url : 'http://localhost/androidapp/routes/feedback.php',
-                        success : function(data)
-                        {
-                            if(data=="success")
-                            {
-                                alert("Bhadiya bhai");
-                            }
-                        }
-
-                });
+                alert("Feedback is successfully received");
             });
         });
 	</script>

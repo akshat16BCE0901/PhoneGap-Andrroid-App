@@ -71,28 +71,34 @@
         {
             $("#submit").unbind().click(function()
             {
-                $.ajax({
+                location.href = 'views/feedback.html';
+                // $.ajax({
 
-                        type : 'post',
-                        data : {
+                //         type : 'post',
+                //         data : {
 
-                            'name' : $('#name').val(),
-                            'age' : $('#age').val(),
-                            'phone' : $('#phone').val(),
-                            'address' : $('#address').val()
+                //             'name' : $('#name').val(),
+                //             'age' : $('#age').val(),
+                //             'phone' : $('#phone').val(),
+                //             'address' : $('#address').val()
 
 
-                        },
-                        url : 'http://localhost/androidapp/routes/msg.php',
-                        success : function(data)
-                        {
-                            if(data=="success")
-                            {
-                                location.href = 'views/feedback.html';
-                            }
-                        }
+                //         },
+                //         url : 'http://localhost/androidapp/routes/msg.php',
+                //         success : function(data)
+                //         {
+                //             if(data=="success")
+                //             {
+                                
+                                
+                //             }
+                //             else
+                //             {
+                //                 console.log(data);
+                //             }
+                //         }
 
-                });
+                // });
             });
         });
     </script>
